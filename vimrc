@@ -14,7 +14,7 @@ set path+=**
 set wildmenu
 
 syntax on
-filetype plugin on
+filetype plugin indent on
 
 highlight ColorColumn ctermbg=magenta ctermfg=white
 call matchadd('ColorColumn', '\%101v', 100)
@@ -24,3 +24,6 @@ let g:netrw_altv=1          " Open splits to the right
 let g:netrw_liststyle=3     " Tree view
 
 command! MakeTags !ctags -R .
+
+inoremap jk <Esc>
+let mapleader="<Space>"
