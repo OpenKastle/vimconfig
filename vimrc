@@ -9,6 +9,8 @@ set nowrap
 set autoindent
 set nocompatible
 set backspace=2
+set hlsearch
+set incsearch
 
 set path+=**
 set wildmenu
@@ -26,4 +28,6 @@ let g:netrw_liststyle=3     " Tree view
 command! MakeTags !ctags -R .
 
 inoremap jk <Esc>
-let mapleader="<Space>"
+let mapleader="\<Space>"
+
+nnoremap <Leader>o o<Esc>O
