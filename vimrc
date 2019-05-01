@@ -1,5 +1,9 @@
+execute pathogen#infect()
+
+set nocompatible
 set number
 set relativenumber
+set showcmd
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -7,7 +11,6 @@ set shiftround
 set expandtab
 set nowrap
 set autoindent
-set nocompatible
 set backspace=2
 set hlsearch
 set incsearch
@@ -31,3 +34,6 @@ inoremap jk <Esc>
 let mapleader="\<Space>"
 
 nnoremap <Leader>o o<Esc>O
+
+" NERDTree
+nnoremap <C-n> :NERDTreeToggle<CR>
