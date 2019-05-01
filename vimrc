@@ -37,3 +37,6 @@ nnoremap <Leader>o o<Esc>O
 
 " NERDTree
 nnoremap <C-n> :NERDTreeToggle<CR>
+
+" Tagbar
+nnoremap <C-m> :TagbarToggle<CR>
