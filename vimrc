@@ -18,6 +18,8 @@ set incsearch
 set path+=**
 set wildmenu
 
+set nrformats=octal,hex,alpha
+
 syntax on
 filetype plugin indent on
 
