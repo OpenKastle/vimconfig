@@ -11,9 +11,11 @@ set shiftround
 set expandtab
 set nowrap
 set autoindent
+set breakindent
 set backspace=2
 set hlsearch
 set incsearch
+set spelllang=en_us
 
 set path+=**
 set wildmenu
@@ -42,3 +44,7 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 
 " Tagbar
 nnoremap <C-m> :TagbarToggle<CR>
+
+" Goyo
+command Writemode setlocal spell | setlocal wrap | setlocal linebreak | Goyo
+command Codemode  Goyo! | setlocal nospell | setlocal nowrap | setlocal nolinebreak
