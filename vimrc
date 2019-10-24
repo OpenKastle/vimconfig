@@ -48,3 +48,20 @@ nnoremap <C-m> :TagbarToggle<CR>
 " Goyo
 command Writemode setlocal spell | setlocal wrap | setlocal linebreak | Goyo
 command Codemode  Goyo! | setlocal nospell | setlocal nowrap | setlocal nolinebreak
+
+nnoremap <Leader>h i--------------------------------------------------------------------------------<CR><Esc>
+
+function MarkdownLevel()
+    let h = matchstr(getline(v:lnum), '^#\+')
+    if empty(h)
+        return "="
+    else
+        return ">" . len(h)
+    endif
+endfunction
+
+au BufEnter *.md setlocal foldexpr=MarkdownLevel()
+au BufEnter *.md setlocal foldmethod=expr
+au BufEnter *.md hi Title ctermfg=Cyan
+au BufEnter *.md hi Special ctermfg=Green
+au BufEnter *.md normal zR<CR>
