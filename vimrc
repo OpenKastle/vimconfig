@@ -16,6 +16,7 @@ set backspace=2
 set hlsearch
 set incsearch
 set spelllang=en_us
+set background=dark
 
 set path+=**
 set wildmenu
@@ -48,6 +49,11 @@ nnoremap <C-m> :TagbarToggle<CR>
 " Goyo
 command Writemode setlocal spell | setlocal wrap | setlocal linebreak | Goyo
 command Codemode  Goyo! | setlocal nospell | setlocal nowrap | setlocal nolinebreak
+
+" Syntastic
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 0
+let g:syntastic_mode_map = { 'mode': 'passive' }
 
 nnoremap <Leader>h i--------------------------------------------------------------------------------<CR><Esc>
 
