@@ -70,4 +70,5 @@ au BufEnter *.md setlocal foldexpr=MarkdownLevel()
 au BufEnter *.md setlocal foldmethod=expr
 au BufEnter *.md hi Title ctermfg=Cyan
 au BufEnter *.md hi Special ctermfg=Green
+au BufEnter *.md hi htmlTagName ctermfg=DarkCyan
 au BufEnter *.md normal zR<CR>
