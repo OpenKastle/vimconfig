@@ -50,14 +50,8 @@ nnoremap <C-m> :TagbarToggle<CR>
 command Writemode setlocal spell | setlocal wrap | setlocal linebreak | Goyo
 command Codemode  Goyo! | setlocal nospell | setlocal nowrap | setlocal nolinebreak
 
-" Syntastic
-" let g:syntastic_check_on_open = 0
-" let g:syntastic_check_on_wq = 0
-let g:syntastic_mode_map = { 'mode': 'passive' }
-
 " YouCompleteMe
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-let g:ycm_show_diagnostics_ui = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
 nnoremap <Leader>h i--------------------------------------------------------------------------------<CR><Esc>
