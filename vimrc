@@ -54,6 +54,9 @@ command Codemode  Goyo! | setlocal nospell | setlocal nowrap | setlocal nolinebr
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
+" CtrlP
+let g:ctrlp_custom_ignore = { 'dir': 'build$' }
+
 nnoremap <Leader>h i--------------------------------------------------------------------------------<CR><Esc>
 
 function MarkdownLevel()
