@@ -17,6 +17,8 @@ set hlsearch
 set incsearch
 set spelllang=en_us
 set background=dark
+set splitbelow
+set splitright
 
 set path+=**
 set wildmenu
@@ -56,6 +58,13 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " CtrlP
 let g:ctrlp_custom_ignore = { 'dir': 'build$' }
+
+" Syntastic
+let g:syntastic_python_checkers = ['flake8']
+
+" Python
+command PythonRun terminal python3 %
+nnoremap <Leader>p :PythonRun<CR>
 
 nnoremap <Leader>h i--------------------------------------------------------------------------------<CR><Esc>
 
