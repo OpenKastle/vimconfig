@@ -42,23 +42,6 @@ let mapleader="\<Space>"
 
 nnoremap <Leader>o o<Esc>O
 
-" Window
-au! WinEnter * call WindowResizeMappings()
-
-fun! WindowResizeMappings()
-    if winnr() < winnr('$')
-        nnoremap <C-l> 5<C-w>>
-        nnoremap <C-h> 5<C-w><
-        nnoremap <C-j> 5<C-w>+
-        nnoremap <C-k> 5<C-w>-
-    else
-        nnoremap <C-l> 5<C-w><
-        nnoremap <C-h> 5<C-w>>
-        nnoremap <C-j> 5<C-w>-
-        nnoremap <C-k> 5<C-w>+
-    endif
-endfun
-
 " NERDTree
 nnoremap <C-n> :NERDTreeToggle<CR>
 
