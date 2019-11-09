@@ -64,7 +64,9 @@ let g:syntastic_python_checkers = ['flake8']
 
 " Python
 command PythonRun terminal python3 %
+command PythonRunVertical vertical terminal python3 %
 nnoremap <Leader>p :PythonRun<CR>
+nnoremap <Leader><Leader>p :PythonRunVertical<CR>
 
 nnoremap <Leader>h i--------------------------------------------------------------------------------<CR><Esc>
 
