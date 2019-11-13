@@ -19,6 +19,7 @@ set spelllang=en_us
 set background=dark
 set splitbelow
 set splitright
+set laststatus=2
 
 set path+=**
 set wildmenu
@@ -31,16 +32,13 @@ filetype plugin indent on
 highlight ColorColumn ctermbg=magenta ctermfg=white
 call matchadd('ColorColumn', '\%101v', 100)
 
-let g:netrw_banner=0        " Disable banner
-let g:netrw_altv=1          " Open splits to the right
-let g:netrw_liststyle=3     " Tree view
-
 command! MakeTags !ctags -R .
 
 inoremap jk <Esc>
 let mapleader="\<Space>"
 
 nnoremap <Leader>o o<Esc>O
+nnoremap <Leader>h i--------------------------------------------------------------------------------<CR><Esc>
 
 " NERDTree
 nnoremap <C-n> :NERDTreeToggle<CR>
@@ -68,8 +66,7 @@ command PythonRunVertical vertical terminal python3 %
 nnoremap <Leader>p :PythonRun<CR>
 nnoremap <Leader><Leader>p :PythonRunVertical<CR>
 
-nnoremap <Leader>h i--------------------------------------------------------------------------------<CR><Esc>
-
+" Markdown syntax
 function MarkdownLevel()
     let h = matchstr(getline(v:lnum), '^#\+')
     if empty(h)
@@ -85,3 +82,9 @@ au BufEnter *.md hi Title ctermfg=Cyan
 au BufEnter *.md hi Special ctermfg=Green
 au BufEnter *.md hi htmlTagName ctermfg=DarkCyan
 au BufEnter *.md normal zR<CR>
+
+" Statusline
+highlight StatusLine ctermfg=Blue ctermbg=White
+
+autocmd InsertEnter * highlight StatusLine ctermfg=Magenta ctermbg=White
+autocmd InsertLeave * highlight StatusLine ctermfg=Blue ctermbg=White
