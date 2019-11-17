@@ -47,11 +47,11 @@ nnoremap <Leader>h i------------------------------------------------------------
 " }}}
 
 " NERDTree {{{
-nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
 " }}}
 
 " Tagbar {{{
-nnoremap <C-m> :TagbarToggle<CR>
+nnoremap <leader>m :TagbarToggle<CR>
 " }}}
 
 " Goyo {{{
