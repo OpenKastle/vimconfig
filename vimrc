@@ -43,20 +43,25 @@ inoremap jk <Esc>
 let mapleader="\<Space>"
 
 nnoremap <Leader>o o<Esc>O
-nnoremap <Leader>h i--------------------------------------------------------------------------------<CR><Esc>
+nnoremap <Leader>h <C-w>h
+nnoremap <Leader>j <C-w>j
+nnoremap <Leader>k <C-w>k
+nnoremap <Leader>l <C-w>l
+
+nnoremap <Leader>H i--------------------------------------------------------------------------------<CR><Esc>
 " }}}
 
 " NERDTree {{{
-nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <Leader>n :NERDTreeToggle<CR>
 " }}}
 
 " Tagbar {{{
-nnoremap <leader>m :TagbarToggle<CR>
+nnoremap <Leader>m :TagbarToggle<CR>
 " }}}
 
 " Goyo {{{
-command Writemode setlocal spell | setlocal wrap | setlocal linebreak | Goyo
-command Codemode  Goyo! | setlocal nospell | setlocal nowrap | setlocal nolinebreak
+command! Writemode setlocal spell | setlocal wrap | setlocal linebreak | Goyo
+command! Codemode  Goyo! | setlocal nospell | setlocal nowrap | setlocal nolinebreak
 " }}}
 
 " YouCompleteMe {{{
@@ -73,14 +78,14 @@ let g:syntastic_python_checkers = ['flake8']
 " }}}
 
 " Python {{{
-command PythonRun terminal python3 %
-command PythonRunVertical vertical terminal python3 %
+command! PythonRun terminal python3 %
+command! PythonRunVertical vertical terminal python3 %
 nnoremap <Leader>p :PythonRun<CR>
 nnoremap <Leader><Leader>p :PythonRunVertical<CR>
 " }}}
 
 " Markdown {{{
-function MarkdownLevel()
+function! MarkdownLevel()
     let h = matchstr(getline(v:lnum), '^#\+')
     if empty(h)
         return "="
@@ -91,25 +96,30 @@ endfunction
 
 augroup markdown_commands
     autocmd!
-    autocmd BufEnter *.md setlocal foldexpr=MarkdownLevel()
-    autocmd BufEnter *.md setlocal foldmethod=expr
-    autocmd BufEnter *.md hi Title ctermfg=Cyan
-    autocmd BufEnter *.md hi Special ctermfg=Green
-    autocmd BufEnter *.md hi htmlTagName ctermfg=DarkCyan
-    autocmd BufEnter *.md normal zR<CR>
-augroup END
+    autocmd FileType,Syntax markdown setlocal foldexpr=MarkdownLevel()
+    autocmd FileType,Syntax markdown setlocal foldmethod=expr
+    autocmd FileType,Syntax markdown setlocal wrap
+    autocmd FileType,Syntax markdown setlocal linebreak
+    autocmd FileType,Syntax markdown hi Title ctermfg=Cyan
+    autocmd FileType,Syntax markdown hi Special ctermfg=Green
+    autocmd FileType,Syntax markdown hi htmlTagName ctermfg=DarkCyan
+    autocmd FileType,Syntax markdown normal zR<CR>
+augroup end
 " }}}
 
 " Vim files {{{
-augroup filetype_vim
+augroup filetypevim_commands
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
-augroup END
+augroup end
 " }}}
 
 " Statusline {{{
 highlight StatusLine ctermfg=Blue ctermbg=White
 
-autocmd InsertEnter * highlight StatusLine ctermfg=Magenta ctermbg=White
-autocmd InsertLeave * highlight StatusLine ctermfg=Blue ctermbg=White
+augroup statusline_commands
+    autocmd!
+    autocmd InsertEnter * highlight StatusLine ctermfg=Magenta ctermbg=White
+    autocmd InsertLeave * highlight StatusLine ctermfg=Blue ctermbg=White
+augroup end
 " }}}
