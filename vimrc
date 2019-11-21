@@ -115,6 +115,8 @@ augroup end
 " }}}
 
 " Statusline {{{
+set statusline=%f\ %y%=[line\ %l]\ [col\ %c]\ [%P]
+
 highlight StatusLine ctermfg=Blue ctermbg=White
 
 augroup statusline_commands
