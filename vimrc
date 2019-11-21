@@ -26,6 +26,7 @@ set laststatus=2
 set path+=**
 set wildmenu
 set nrformats=octal,hex,alpha
+set foldlevelstart=99
 " }}}
 
 " Misc {{{
@@ -35,7 +36,7 @@ filetype plugin indent on
 highlight ColorColumn ctermbg=magenta ctermfg=white
 call matchadd('ColorColumn', '\%101v', 100)
 
-highlight Folded ctermbg=DarkCyan ctermfg=White
+highlight Folded ctermbg=Black ctermfg=DarkCyan
 
 command! MakeTags !ctags -R .
 
@@ -103,7 +104,6 @@ augroup markdown_commands
     autocmd FileType,Syntax markdown hi Title ctermfg=Cyan
     autocmd FileType,Syntax markdown hi Special ctermfg=Green
     autocmd FileType,Syntax markdown hi htmlTagName ctermfg=DarkCyan
-    autocmd FileType,Syntax markdown normal zR<CR>
 augroup end
 " }}}
 
