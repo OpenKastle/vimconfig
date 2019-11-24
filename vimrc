@@ -33,10 +33,10 @@ set foldlevelstart=99
 syntax on
 filetype plugin indent on
 
+colorscheme orion
+
 highlight ColorColumn ctermbg=magenta ctermfg=white
 call matchadd('ColorColumn', '\%101v', 100)
-
-highlight Folded ctermbg=Black ctermfg=DarkCyan
 
 command! MakeTags !ctags -R .
 
