@@ -38,6 +38,10 @@ colorscheme orion
 highlight ColorColumn ctermbg=magenta ctermfg=white
 call matchadd('ColorColumn', '\%101v', 100)
 
+" Highlight trailing whitespace as error only if we can't match the cursor position before the end
+" of line (i.e. when we're in insert mode and \%# == $)
+call matchadd('Error', '\s\+\%#\@<!$')
+
 command! MakeTags !ctags -R .
 
 inoremap jk <Esc>
