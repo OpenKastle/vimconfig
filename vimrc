@@ -58,6 +58,8 @@ nnoremap <Leader>k <C-w>k
 nnoremap <Leader>l <C-w>l
 
 nnoremap <Leader>H i--------------------------------------------------------------------------------<CR><Esc>
+
+inoremap <C-u> <Esc>g~iwea
 " }}}
 
 " NERDTree {{{
