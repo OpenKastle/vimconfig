@@ -27,6 +27,7 @@ set path+=**
 set wildmenu
 set nrformats=octal,hex,alpha
 set foldlevelstart=99
+set scrolloff=0
 " }}}
 
 " Misc {{{
@@ -39,11 +40,11 @@ highlight ColorColumn ctermbg=magenta ctermfg=white
 
 augroup MatchAutocommands
     autocmd!
-    autocmd BufEnter,WinEnter * silent! call matchadd('ColorColumn', '\%101v', 100)
+    autocmd VimEnter,BufNew,TabNew,WinNew * silent! call matchadd('ColorColumn', '\%101v', 100)
 
     " Highlight trailing whitespace as error only if we can't match the cursor position before the end
     " of line (i.e. when we're in insert mode and \%# == $)
-    autocmd BufEnter,WinEnter * silent! call matchadd('Error', '\s\+\%#\@<!$')
+    autocmd VimEnter,BufNew,TabNew,WinNew * silent! call matchadd('Error', '\s\+\%#\@<!$')
 augroup end
 
 command! MakeTags !ctags -R .
@@ -97,7 +98,7 @@ nnoremap <Leader><Leader>p :PythonRunVertical<CR>
 
 " Markdown {{{
 function! MarkdownLevel()
-    let h = matchstr(getline(v:lnum), '^#\+')
+    let h = matchstr(getline(v:lnum), '^\s*\zs#\+')
     if empty(h)
         return "="
     else
