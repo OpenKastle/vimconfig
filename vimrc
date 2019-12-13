@@ -28,6 +28,8 @@ set wildmenu
 set nrformats=octal,hex,alpha
 set foldlevelstart=99
 set scrolloff=0
+set cursorline
+set cursorlineopt=number
 " }}}
 
 " Misc {{{
@@ -61,6 +63,8 @@ nnoremap <Leader>l <C-w>l
 nnoremap <Leader>H i--------------------------------------------------------------------------------<CR><Esc>
 
 inoremap <C-u> <Esc>g~iwea
+
+nnoremap <Leader>/ :windo normal! ggg?G<CR>
 " }}}
 
 " NERDTree {{{
@@ -79,6 +83,7 @@ command! Codemode  Goyo! | setlocal nospell | setlocal nowrap | setlocal nolineb
 " YouCompleteMe {{{
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_filetype_blacklist = {}
 " }}}
 
 " CtrlP {{{
@@ -126,13 +131,13 @@ augroup end
 " }}}
 
 " Statusline {{{
-set statusline=%f\ %y%=[line\ %l]\ [col\ %c]\ [%P]
+set statusline=%f\ %y\ %m%=[line\ %l]\ [col\ %c]\ [%P]
 
-highlight StatusLine ctermfg=Blue ctermbg=White
+highlight StatusLine ctermfg=White ctermbg=Blue term=none cterm=bold
 
 augroup statusline_commands
     autocmd!
-    autocmd InsertEnter * highlight StatusLine ctermfg=Magenta ctermbg=White
-    autocmd InsertLeave * highlight StatusLine ctermfg=Blue ctermbg=White
+    autocmd InsertEnter * highlight StatusLine ctermfg=White ctermbg=Magenta term=none cterm=bold
+    autocmd InsertLeave * highlight StatusLine ctermfg=White ctermbg=Blue term=none cterm=bold
 augroup end
 " }}}
