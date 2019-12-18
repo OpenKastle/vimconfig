@@ -42,11 +42,11 @@ highlight ColorColumn ctermbg=magenta ctermfg=white
 
 augroup MatchAutocommands
     autocmd!
-    autocmd VimEnter,BufNew,TabNew,WinNew * silent! call matchadd('ColorColumn', '\%101v', 100)
+    autocmd VimEnter,BufNew,TabNew,WinNew * silent! if !exists('w:matchColumnLimit') | let w:matchColumnLimit = matchadd('ColorColumn', '\%101v', 100) | endif
 
     " Highlight trailing whitespace as error only if we can't match the cursor position before the end
     " of line (i.e. when we're in insert mode and \%# == $)
-    autocmd VimEnter,BufNew,TabNew,WinNew * silent! call matchadd('Error', '\s\+\%#\@<!$')
+    autocmd VimEnter,BufNew,TabNew,WinNew * silent! if !exists('w:matchTrailingWhitespace') | let w:matchTrailingWhitespace = matchadd('Error', '\s\+\%#\@<!$') | endif
 augroup end
 
 command! MakeTags !ctags -R .
