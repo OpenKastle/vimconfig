@@ -65,6 +65,12 @@ nnoremap <Leader>H i------------------------------------------------------------
 inoremap <C-u> <Esc>g~iwea
 
 nnoremap <Leader>/ :windo normal! ggg?G<CR>
+
+function! SplitLines()
+    execute "normal! i\<CR>\<ESC>k:silent! s/\\s\\+$//\<CR>j0"
+endfunction
+
+nnoremap K :call SplitLines()<CR>
 " }}}
 
 " NERDTree {{{
