@@ -137,13 +137,39 @@ augroup end
 " }}}
 
 " Statusline {{{
-set statusline=%f\ %y\ %m%=[line\ %l]\ [col\ %c]\ [%P]
+" set statusline=%f\ %y\ %m%=[line\ %l]\ [col\ %c]\ [%P]
+"
+" highlight StatusLine ctermfg=White ctermbg=Blue term=none cterm=bold
+"
+" augroup statusline_commands
+"     autocmd!
+"     autocmd InsertEnter * highlight StatusLine ctermfg=White ctermbg=Magenta term=none cterm=bold
+"     autocmd InsertLeave * highlight StatusLine ctermfg=White ctermbg=Blue term=none cterm=bold
+" augroup end
+" }}}
 
-highlight StatusLine ctermfg=White ctermbg=Blue term=none cterm=bold
+" Signature {{{
+highlight SignColumn ctermbg=Black
+let g:SignatureMarkTextHL = "Type"
+let g:SignatureMarkerTextHL = "Constant"
+" }}}
 
-augroup statusline_commands
-    autocmd!
-    autocmd InsertEnter * highlight StatusLine ctermfg=White ctermbg=Magenta term=none cterm=bold
-    autocmd InsertLeave * highlight StatusLine ctermfg=White ctermbg=Blue term=none cterm=bold
-augroup end
+" Airline {{{
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_symbols.paste = 'ρ'
+
+" powerline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.dirty='⚡'
 " }}}
