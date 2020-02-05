@@ -29,7 +29,8 @@ set nrformats=octal,hex,alpha
 set foldlevelstart=99
 set scrolloff=0
 set cursorline
-set cursorlineopt=number
+set cursorcolumn
+set cursorlineopt=number,screenline
 " }}}
 
 " Misc {{{
@@ -74,6 +75,9 @@ nnoremap K :call SplitLines()<CR>
 
 vnoremap <Esc> <C-c>
 inoremap <Esc> <C-c>
+
+command! ToggleCursorIndicators set cursorline! | set cursorcolumn!
+nnoremap <Leader>cl :ToggleCursorIndicators<CR>
 " }}}
 
 " NERDTree {{{
@@ -158,6 +162,17 @@ let g:SignatureMarkerTextHL = "Constant"
 " }}}
 
 " Airline {{{
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_tab_count = 0
+let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#buf_label_first = 1
+
 let g:airline_powerline_fonts = 1
 
 let g:airline_theme='wombat'
