@@ -78,6 +78,18 @@ inoremap <Esc> <C-c>
 
 command! ToggleCursorIndicators set cursorline! | set cursorcolumn!
 nnoremap <Leader>cl :ToggleCursorIndicators<CR>
+
+nnoremap gb :ls<CR>:buffer<Space>
+
+nnoremap <silent> <Leader>1 :buffer 1<CR>
+nnoremap <silent> <Leader>2 :buffer 2<CR>
+nnoremap <silent> <Leader>3 :buffer 3<CR>
+nnoremap <silent> <Leader>4 :buffer 4<CR>
+nnoremap <silent> <Leader>5 :buffer 5<CR>
+nnoremap <silent> <Leader>6 :buffer 6<CR>
+nnoremap <silent> <Leader>7 :buffer 7<CR>
+nnoremap <silent> <Leader>8 :buffer 8<CR>
+nnoremap <silent> <Leader>9 :buffer 9<CR>
 " }}}
 
 " NERDTree {{{
