@@ -26,14 +26,24 @@ set laststatus=2
 set path+=**
 set wildmenu
 set nrformats=octal,hex,alpha
-set foldlevelstart=99
 set scrolloff=0
+set lazyredraw
 set cursorline
 set cursorcolumn
 set cursorlineopt=number,screenline
+set ignorecase
+set smartcase
+set virtualedit=onemore
 " }}}
 
 " Misc {{{
+
+" Block cursor
+let &t_ti.="\e[1 q"
+let &t_SI.="\e[5 q"
+let &t_EI.="\e[1 q"
+let &t_te.="\e[0 q"
+
 syntax on
 filetype plugin indent on
 
@@ -53,19 +63,12 @@ augroup end
 command! MakeTags !ctags -R .
 
 inoremap jk <Esc>
+
 let mapleader="\<Space>"
 
 nnoremap <Leader>o o<Esc>O
-nnoremap <Leader>h <C-w>h
-nnoremap <Leader>j <C-w>j
-nnoremap <Leader>k <C-w>k
-nnoremap <Leader>l <C-w>l
-
-nnoremap <Leader>H i--------------------------------------------------------------------------------<CR><Esc>
 
 inoremap <C-u> <Esc>g~iwea
-
-nnoremap <Leader>/ :windo normal! ggg?G<CR>
 
 function! SplitLines()
     execute "normal! i\<CR>\<ESC>k:silent! s/\\s\\+$//\<CR>j0"
@@ -77,19 +80,31 @@ vnoremap <Esc> <C-c>
 inoremap <Esc> <C-c>
 
 command! ToggleCursorIndicators set cursorline! | set cursorcolumn!
-nnoremap <Leader>cl :ToggleCursorIndicators<CR>
 
-nnoremap gb :ls<CR>:buffer<Space>
+nnoremap <C-h> :bp<CR>
+nnoremap <C-l> :bn<CR>
 
-nnoremap <silent> <Leader>1 :buffer 1<CR>
-nnoremap <silent> <Leader>2 :buffer 2<CR>
-nnoremap <silent> <Leader>3 :buffer 3<CR>
-nnoremap <silent> <Leader>4 :buffer 4<CR>
-nnoremap <silent> <Leader>5 :buffer 5<CR>
-nnoremap <silent> <Leader>6 :buffer 6<CR>
-nnoremap <silent> <Leader>7 :buffer 7<CR>
-nnoremap <silent> <Leader>8 :buffer 8<CR>
-nnoremap <silent> <Leader>9 :buffer 9<CR>
+command! -nargs=1 Math call MathBC(<f-args>)
+
+function! MathBC(expression)
+    execute "read !echo \"" . a:expression "\" | bc"
+    normal kJ
+endfunction
+
+nnoremap <silent> <Esc><Esc> :<C-u>nohlsearch<CR>
+
+inoremap <C-h> <CR>{<CR>}<Esc>O
+
+nnoremap <Leader>s :set spell!<CR>
+nnoremap <Leader>q :bp<Bar>bd#<CR>
+
+nmap <BS> <Leader>
+
+map <Leader> <Plug>(easymotion-prefix)
+" }}}
+
+" Snippets {{{
+command! Week read ~/.vim/snippets/week.md
 " }}}
 
 " NERDTree {{{
@@ -120,7 +135,7 @@ let g:syntastic_python_checkers = ['flake8']
 " }}}
 
 " Python {{{
-command! PythonRun terminal python3 %
+command! PythonRun tab terminal ++close python3 %
 command! PythonRunVertical vertical terminal python3 %
 nnoremap <Leader>p :PythonRun<CR>
 nnoremap <Leader><Leader>p :PythonRunVertical<CR>
@@ -205,9 +220,9 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.whitespace = 'Ξ'
-let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.linenr = '¶'
 let g:airline_symbols.maxlinenr = ''
-let g:airline_symbols.dirty=' ⬚'
+let g:airline_symbols.dirty='⬚'
 
 " let g:airline_symbols.crypt = ''
 " let g:airline_symbols.spell = ''
